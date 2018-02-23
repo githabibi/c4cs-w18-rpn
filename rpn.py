@@ -5,13 +5,15 @@ import operator
 operators = {
     '+': operator.add,
     '-': operator.sub,
+    '*': operator.mul,
+    '/': operator.truediv
 }
 
 def calculate(arg):
     stack = list()
     for token in arg.split():
         try:
-            value = int(token)
+            value = float(token)
             stack.append(value)
         except ValueError:
             function = operators[token]
