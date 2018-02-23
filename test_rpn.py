@@ -37,7 +37,10 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate('5 10 / 2 /')
         self.assertEqual(1/4, result)
 
+    def test_all(self):
+        result = rpn.calculate('5 5 + 2 - 10 + 3 - 2 * 3 /')
+        self.assertEqual(10, result)
+
     def test_tooMany(self):
         with self.assertRaises(TypeError):
             result = rpn.calculate('1 2 3 +')
-
