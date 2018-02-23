@@ -31,15 +31,15 @@ class TestBasics(unittest.TestCase):
 
     def test_divide(self):
         result = rpn.calculate('3 5 /')
-        self.assertEqual((3/5), result)
+        self.assertEqual((3.0/5.0), result)
 
     def test_divides(self):
         result = rpn.calculate('5 10 / 2 /')
-        self.assertEqual(1/4, result)
+        self.assertEqual(1.0/4.0, result)
 
     def test_all(self):
         result = rpn.calculate('5 5 + 2 - 10 + 3 - 2 * 3 /')
-        self.assertEqual(10, result)
+        self.assertEqual(10.0, result)
 
     def test_tooMany(self):
         with self.assertRaises(TypeError):
