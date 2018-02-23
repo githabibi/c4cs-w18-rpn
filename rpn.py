@@ -9,7 +9,10 @@ def calculate(arg):
         except ValueError:
             arg1 = stack.pop()
             arg2 = stack.pop()
-            return arg1 + arg2
+            result = arg1 + arg2
+            stack.append(result)
+        print(stack)
+    return stack.pop()
 
 def main():
     while True:
