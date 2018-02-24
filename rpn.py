@@ -8,11 +8,19 @@ logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler(sys.stdout)
 logger.addHandler(ch)
 
+def factorial(base):
+    if base < 0:
+        raise ArithmeticError
+    if base == 0:
+        return 1
+    return base * factorial(base-1)
+
 operators = {
     '+': operator.add,
     '-': operator.sub,
     '*': operator.mul,
-    '/': operator.truediv
+    '/': operator.truediv,
+    '!': factorial,
 }
 
 def calculate(arg):
@@ -23,9 +31,14 @@ def calculate(arg):
             stack.append(value)
         except ValueError:
             function = operators[token]
-            arg2 = stack.pop()
-            arg1 = stack.pop()
-            result = function(arg1, arg2) 
+            result = 0
+            if function == factorial:
+                arg = stack.pop()
+                result = function(arg)
+            else:
+                arg2 = stack.pop()
+                arg1 = stack.pop()
+                result = function(arg1, arg2) 
             stack.append(result)
         logger.debug(stack)
 
