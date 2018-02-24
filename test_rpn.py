@@ -57,6 +57,10 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate('3 2 + !')
         self.assertEqual(120, result)
 
+    def test_history(self):
+        result = rpn.calculate('3 2 + history()')
+        self.assertEqual('3 + 2 = 5', result)
+
     def test_tooMany(self):
         with self.assertRaises(TypeError):
             result = rpn.calculate('1 2 3 +')
