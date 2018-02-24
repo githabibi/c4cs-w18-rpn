@@ -41,6 +41,22 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate('5 5 + 2 - 10 + 3 - 2 * 3 /')
         self.assertEqual(10.0, result)
 
+    def test_factorial(self):
+        result = rpn.calculate('4 !')
+        self.assertEqual(24, result)
+
+    def test_zeroFactorial(self):
+        result = rpn.calculate('0 !')
+        self.assertEqual(1, result)
+
+    def test_negativeFactorial(self):
+        with self.assertRaises(TypeError):
+            result = rpn.calculate('-2 !')
+
+    def test_factorialInCalculation(self):
+        result = rpn.calculate('3 2 + !')
+        self.assertEqual(120, result)
+
     def test_tooMany(self):
         with self.assertRaises(TypeError):
             result = rpn.calculate('1 2 3 +')
