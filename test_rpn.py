@@ -50,7 +50,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(1, result)
 
     def test_negativeFactorial(self):
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ArithmeticError):
             result = rpn.calculate('-2 !')
 
     def test_factorialInCalculation(self):
