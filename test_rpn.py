@@ -61,6 +61,10 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate('3 2 + history()')
         self.assertEqual('3.0 + 2.0 = 5.0', result)
 
+    def test_fraction(self):
+        result = rpn.calculate('0.75 asFraction()')
+        self.assertEqual('3/4', result)
+
     def test_tooMany(self):
         with self.assertRaises(TypeError):
             result = rpn.calculate('1 2 3 +')
