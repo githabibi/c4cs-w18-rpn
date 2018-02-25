@@ -3,6 +3,7 @@
 import sys
 import operator
 import logging
+from fractions import Fraction
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler(sys.stdout)
@@ -40,6 +41,8 @@ def printHistory():
         output = "No history is present"
     return output
 
+def fractionify(decimal):
+    return str(Fraction(decimal))
 
 operators = {
     '+': operator.add,
@@ -48,6 +51,7 @@ operators = {
     '/': operator.truediv,
     '!': factorial,
     'history()': printHistory,
+    'asFraction()': fractionify,
 }
 
 def calculate(arg):
@@ -60,7 +64,7 @@ def calculate(arg):
         except ValueError:
             function = operators[token]
             result = 0
-            if function == factorial:
+            if function == factorial or function == fractionify:
                 history = list()
                 arg = stack.pop()
                 history.append(arg)
