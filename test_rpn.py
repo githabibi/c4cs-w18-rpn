@@ -65,6 +65,10 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate('0.75 asFraction()')
         self.assertEqual('3/4', result)
 
+    def test_exponentiation(self):
+        result = rpn.calculate('4 2 ^')
+        self.assertEqual(16, result)
+
     def test_tooMany(self):
         with self.assertRaises(TypeError):
             result = rpn.calculate('1 2 3 +')
