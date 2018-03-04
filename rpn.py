@@ -48,6 +48,7 @@ operators = {
     '+': operator.add,
     '-': operator.sub,
     '*': operator.mul,
+    '^': operator.pow,
     '/': operator.truediv,
     '!': factorial,
     'history()': printHistory,
