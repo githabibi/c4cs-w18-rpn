@@ -4,6 +4,7 @@ import sys
 import operator
 import logging
 import readline
+from colored import fore, style
 from fractions import Fraction
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -22,19 +23,31 @@ def factorial(base):
 def printHistory():
     global history
     output = None
+    answer = None
     if len(history) == 3:
         answer = history.pop()
         token = history.pop()
         arg = history.pop()
-        output = str(arg) + " " + str(token) + \
-                 " = " + str(answer)
+        output = fore.LIGHT_YELLOW + \
+                 str(arg) + " " + str(token) + " = " + \
+                 style.RESET
+
     elif len(history) == 4:
         answer = history.pop()
         token = history.pop()
         arg2 = history.pop()
         arg1 = history.pop()
-        output = str(arg1) + " " + str(token) + \
-                 " " + str(arg2) + " = " + str(answer)
+        output = fore.LIGHT_YELLOW + \
+                 str(arg1) + " " + str(token) + " " + str(arg2) + " = " + \
+                 style.RESET
+
+    if (answer is not None):
+        if answer > 0:
+            output += fore.GREEN + str(answer) + style.RESET
+        elif answer < 0:
+            output += fore.RED + str(answer) + style.RESET
+        else:
+            output += str(answer)
 
     if (output is None):
         output = "No history is present"
