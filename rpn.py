@@ -35,8 +35,6 @@ def printHistory():
         output = str(arg1) + " " + str(token) + \
                  " " + str(arg2) + " = " + str(answer)
 
-    if (len(history) > 0):
-        raise TypeError
     if (output is None):
         output = "No history is present"
     return output

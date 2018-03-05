@@ -57,9 +57,17 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate('3 2 + !')
         self.assertEqual(120, result)
 
-#    def test_history(self):
-#        result = rpn.calculate('3 2 + history()')
-#        self.assertEqual('3.0 + 2.0 = 5.0', result)
+    def test_history(self):
+        result = rpn.calculate('3 2 + history()')
+        self.assertEqual('3.0 + 2.0 = 5.0', result)
+        
+    def test_historyFactorial(self):
+        result = rpn.calculate('3 ! history()')
+        self.assertEqual('3.0 ! = 6.0', result)
+
+    def test_historyEmpty(self):
+        result = rpn.calculate('history()')
+        self.assertEqual('No history is present', result)
 
     def test_fraction(self):
         result = rpn.calculate('0.75 asFraction()')
