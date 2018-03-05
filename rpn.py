@@ -3,6 +3,7 @@
 import sys
 import operator
 import logging
+import readline
 from fractions import Fraction
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
