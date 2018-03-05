@@ -1,7 +1,10 @@
 language: python
 python:
   - "3.5"
+install: 
+  - pip install -U pytest
 script:
   - make test
+  - py.test --cov=. test_rpn.py
 after_success:
   - coveralls
